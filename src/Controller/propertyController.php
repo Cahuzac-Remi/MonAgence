@@ -7,20 +7,17 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Twig\Environment;
 
-class HomeController extends AbstractController
+class propertyController extends AbstractController
 {
-
-
-
-
     /**
-     * @Route("/", name="home")
+     * @Route("/biens", name="property.index")
      * @return Response
      */
     public function index(): Response
     {
-        return $this->render('pages/home.html.twig');
+        return $this->render('property/index.html.twig', [
+            'current_menu' => 'properties'
+        ]);
     }
 }
