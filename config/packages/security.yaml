@@ -11,11 +11,15 @@ security:
             security: false
         main:
             anonymous: true
-            lazy: true
-            provider: users_in_memory
+            provider: from_database
+
+            logout:
+                path: /logout
+                target: /
 
             #http_basic: true
-            form_login: true
+            form_login:
+                check_path: login
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication
@@ -29,4 +33,7 @@ security:
         - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
 
-    ##encoders:
+    encoders:
+        App\Entity\User:
+            algorithm: bcrypt
+            cost: 12
